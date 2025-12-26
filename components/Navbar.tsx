@@ -21,6 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate, isDarkMode, to
 
   const isTransparentAndWhite = currentView === 'home' && !scrolled;
 
+  // REORDERED: about before services
   const navItems: { label: string; view: ViewState }[] = [
     { label: 'Accueil', view: 'home' },
     { label: 'À Propos', view: 'about' },
@@ -58,9 +59,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate, isDarkMode, to
               </button>
             ))}
             
+            {/* DARK MODE TOGGLE BUTTON */}
             <button 
               onClick={toggleDarkMode}
-              className={`ml-2 p-2 rounded-xl transition-all duration-300 ${!isTransparentAndWhite ? 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300' : 'bg-white/10 text-white hover:bg-white/20'}`}
+              className={`ml-2 p-2 rounded-xl transition-all duration-300 border border-transparent ${!isTransparentAndWhite ? 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:border-slate-200 dark:hover:border-slate-700' : 'bg-white/10 text-white hover:bg-white/20'}`}
               aria-label="Changer le thème"
             >
               {isDarkMode ? (
@@ -72,7 +74,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate, isDarkMode, to
           </div>
 
           <div className="md:hidden flex items-center gap-3">
-             <button onClick={toggleDarkMode} className={`p-2 ${!isTransparentAndWhite ? 'text-slate-900 dark:text-white' : 'text-white'}`}>
+             <button onClick={toggleDarkMode} className={`p-2 rounded-xl ${!isTransparentAndWhite ? 'text-slate-900 dark:text-white' : 'text-white'}`}>
                 {isDarkMode ? (
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
                 ) : (
@@ -90,6 +92,26 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate, isDarkMode, to
              </button>
           </div>
         </div>
+        
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-4 glass rounded-[2rem] overflow-hidden p-2 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300">
+             {navItems.map((item) => (
+                <button
+                  key={item.view}
+                  onClick={() => {
+                    onNavigate(item.view);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`block w-full text-left px-6 py-4 rounded-2xl text-sm font-bold transition-all ${
+                    currentView === item.view ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+          </div>
+        )}
       </nav>
     </div>
   );

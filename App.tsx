@@ -44,11 +44,12 @@ const App: React.FC = () => {
               <MassSchedules />
             </div>
             <NewsSection />
-            <div className="py-32 border-t border-slate-50 dark:border-white/5 bg-white dark:bg-slate-950 transition-colors duration-500">
+            {/* Harmonized Community Section */}
+            <div className="py-32 border-t border-slate-100 dark:border-white/5 bg-white dark:bg-slate-950">
                <div className="max-w-7xl mx-auto px-6">
                   <div className="mb-20 text-center">
                     <h2 className="text-sm uppercase tracking-[0.4em] font-black text-blue-600 mb-6">Communauté</h2>
-                    <h3 className="text-5xl md:text-6xl font-extrabold tracking-tighter text-slate-900 dark:text-white">
+                    <h3 className="text-5xl md:text-6xl font-extrabold tracking-tighter text-slate-900 dark:text-white leading-tight">
                       La <span className="serif-italic font-normal text-blue-600">Vie</span> Paroissiale
                     </h3>
                   </div>
@@ -71,7 +72,7 @@ const App: React.FC = () => {
                         )
                       },
                       { 
-                        title: 'Main Tendue', 
+                        title: 'Dons & Projets', 
                         desc: 'Soutenez la construction de l\'église et nos œuvres de charité.', 
                         view: 'donations', 
                         icon: (
