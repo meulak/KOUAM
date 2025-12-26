@@ -5,7 +5,7 @@ export const weeklyPastoralMessage: DailyReflection = {
   verse: "Je suis le chemin, la vérité, et la vie. Nul ne vient au Père que par moi.",
   reference: "Jean 14, 6",
   reflection: "Chers paroissiens, cette semaine, nous sommes invités à redécouvrir la présence du Christ dans nos foyers. Que chaque acte de charité soit une pierre vivante pour notre communauté de Bonamotongo. Portons ensemble le fardeau des plus faibles et rendons grâce pour la joie de nous retrouver en famille paroissiale.",
-  prayer: "Seigneur Etienne, par l'intercession de Saint Paul VI, bénis notre paroisse et guide nos pas vers la sainteté. Amen."
+  prayer: "Seigneur, par l'intercession de Saint Paul VI, bénis notre paroisse et guide nos pas vers la sainteté. Amen."
 };
 
 export const latestNews: NewsItem[] = [
