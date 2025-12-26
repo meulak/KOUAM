@@ -1,0 +1,7 @@
+{
+  "name": "Paroisse Saint Paul VI de Bonamotongo",
+  "description": "Site web officiel de la paroisse Saint Paul VI de Bonamotongo, offrant des horaires de messes, des réflexions quotidiennes alimentées par l'IA et des informations sur les sacrements.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
