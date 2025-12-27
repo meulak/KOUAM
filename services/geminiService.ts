@@ -2,13 +2,14 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { DailyReflection } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+// Toujours utiliser process.env.API_KEY directement.
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const getDailyReflection = async (): Promise<DailyReflection> => {
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
-      contents: "Tu es le curé Abbé Etienne BAKABA de la paroisse Saint Paul VI de Bonamotongo. Rédige 'Le mot du curé' pour aujourd'hui, un message pastoral encourageant pour tes paroissiens basé sur la liturgie du jour. Le ton doit être bienveillant, paternel et inspirant. Inclus un verset biblique central, sa référence, ton message pastoral court (la méditation), et une prière finale pour la communauté.",
+      contents: "Tu es le curé Abbé Etienne BAKABA de la paroisse Saint Paul VI de Bonamotongo. Rédige 'Le mot du curé' pour aujourd'hui, un message pastoral encourageant pour tes paroissiens basé sur la liturgie du jour. Inclus un verset biblique central, sa référence, ton message pastoral court, et une prière finale.",
       config: {
         responseMimeType: "application/json",
         responseSchema: {
@@ -24,14 +25,15 @@ export const getDailyReflection = async (): Promise<DailyReflection> => {
       }
     });
 
-    return JSON.parse(response.text) as DailyReflection;
+    const jsonStr = response.text?.trim() || "{}";
+    return JSON.parse(jsonStr) as DailyReflection;
   } catch (error) {
     console.error("Error fetching daily reflection:", error);
     return {
       verse: "Le Seigneur est mon berger, je ne manque de rien.",
       reference: "Psaume 23, 1",
-      reflection: "Chers paroissiens, en ce jour, rappelons-nous que Dieu veille sur chacun de nous avec l'amour d'un père. Que sa paix habite vos maisons.",
-      prayer: "Seigneur, guide les familles de Bonamotongo sur le chemin de la fraternité. Amen."
+      reflection: "Chers paroissiens, rappelons-nous que Dieu veille sur chacun de nous avec l'amour d'un père.",
+      prayer: "Seigneur, guide les familles de Bonamotongo. Amen."
     };
   }
 };

@@ -44,7 +44,6 @@ const App: React.FC = () => {
               <MassSchedules />
             </div>
             <NewsSection />
-            {/* Harmonized Community Section */}
             <div className="py-32 border-t border-slate-100 dark:border-white/5 bg-white dark:bg-slate-950">
                <div className="max-w-7xl mx-auto px-6">
                   <div className="mb-20 text-center">
